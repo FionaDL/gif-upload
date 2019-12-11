@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @gif.title %>
+  <%= image_tag url_for(@gif.file) %>
+  <ul>
+  <% @gif.labels.each do |label| %>
+    <li><%= link_to label.name, "/labels/#{label.id}" %></li>
+  <% end %>
+  </ul>
+</p>
+
+<%= link_to 'Edit', edit_gif_path(@gif) %> |
+<%= link_to 'Back', gifs_path %>
