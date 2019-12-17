@@ -3,6 +3,12 @@
 <p>
   <strong>Name:</strong>
   <%= @label.name %>
+  <strong>Gifs:</strong>
+  <ul>
+  <% @label.gifs.each do |gif| %>
+    <li><%= link_to gif.title, gif_path(gif)%></li>
+  <% end %>
+  </ul>
 </p>
 
 <%= link_to 'Edit', edit_label_path(@label) %> |

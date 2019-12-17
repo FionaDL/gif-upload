@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_11_204403) do
+ActiveRecord::Schema.define(version: 2019_12_17_201249) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,15 +42,16 @@ ActiveRecord::Schema.define(version: 2019_12_11_204403) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "gifs_labels", force: :cascade do |t|
-    t.integer "gif_id"
-    t.integer "label_id"
-  end
-
   create_table "labels", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "rankings", force: :cascade do |t|
+    t.integer "gif_id"
+    t.integer "label_id"
+    t.integer "rank", default: 0
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

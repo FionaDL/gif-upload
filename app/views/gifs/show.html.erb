@@ -1,9 +1,17 @@
 <p id="notice"><%= notice %></p>
 
+
 <p>
   <strong>Title:</strong>
   <%= @gif.title %>
-  <%= image_tag url_for(@gif.file) %>
+  <label>Small</label>
+    <%= image_tag url_for(@gif.file.variant(resize: "40x40")) %>
+  <label>Medium</label>
+    <%= image_tag url_for(@gif.file.variant(resize: "80x80")) %>
+  <label>Large</label>
+    <%= image_tag url_for(@gif.file.variant(resize: "120x120")) %>
+  <label>Large</label>
+    <%= image_tag url_for(@gif.file.variant(resize: "500x500")) %>
   <ul>
   <% @gif.labels.each do |label| %>
     <li><%= link_to label.name, "/labels/#{label.id}" %></li>

@@ -3,7 +3,9 @@ class Gif < ApplicationRecord
 
   validates :file, size: { less_than: 10.megabytes , message: 'is not given between size' }
 
-  has_and_belongs_to_many :labels
+  has_many :rankings
+  has_many :labels, through: :rankings
+
 
   def labels_string=(value)
     if value == ""
@@ -23,7 +25,7 @@ class Gif < ApplicationRecord
       end
       self.labels = result
     end
-
-    labels
+   labels
   end
+
 end

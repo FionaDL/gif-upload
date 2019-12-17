@@ -19,6 +19,7 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.7'
 
 gem 'active_storage_validations'
+gem 'mini_magick'
 
 
 gem "aws-sdk-s3", require: false

@@ -1,3 +1,4 @@
 class Label < ApplicationRecord
-  has_and_belongs_to_many :gifs
+  has_many :rankings
+  has_many :gifs, through: :rankings
 end

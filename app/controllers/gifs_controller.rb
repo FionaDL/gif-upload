@@ -1,3 +1,5 @@
+require "mini_magick"
+
 class GifsController < ApplicationController
   before_action :set_gif, only: [:show, :edit, :update, :destroy]
 
@@ -40,6 +42,7 @@ class GifsController < ApplicationController
   # PATCH/PUT /gifs/1
   # PATCH/PUT /gifs/1.json
   def update
+    byebug
     respond_to do |format|
       if @gif.update(gif_params)
         format.html { redirect_to @gif, notice: 'Gif was successfully updated.' }
@@ -69,6 +72,6 @@ class GifsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def gif_params
-      params.require(:gif).permit(:title, :file, :labels_string)
+      params.require(:gif).permit(:title, :file, :labels_string, )
     end
 end

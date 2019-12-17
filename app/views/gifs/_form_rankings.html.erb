@@ -1,0 +1,30 @@
+<%= form_with(url: gif_path(@gif), local: true, method: :put) do |form| %>
+  <% if gif.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(gif.errors.count, "error") %> prohibited this gif from being saved:</h2>
+
+      <ul>
+        <% gif.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+    <%= image_tag url_for(@gif.file.variant(resize: "80x80")) %>
+  </div>
+
+  <div>
+    <% @gif.rankings.each do |r| %>
+        <%= form.label r.label.name %>
+        <%= form.number_field "rankings[#{r.label.name}]", value: r.rank %>
+    <% end %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
